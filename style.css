@@ -1,12 +1,29 @@
 body{
-    background: linear-gradient(rgb(174, 181, 183), rgb(151, 157, 158), rgb(134, 138, 139));
+    background: linear-gradient(rgb(233, 211, 138), rgb(158, 204, 211));
     background-repeat: no-repeat;
     background-attachment: fixed;
 
     font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
+    text-align: left;
+}
+@keyframes clickAnimation{
+    0%{transform:matrix(0.5, 0, 0, 0.5, 0, 0)};
 }
 
-#restaurantGame{
+#tableHead{
+    font-size: 30px;
+}
+#tableData{
     font-size: 25px;
+}
+
+#birthday{
+    background: linear-gradient(pink, skyblue);
+    font-size: 25px;
+    border-radius: 8px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    cursor: pointer;
+}
+#birthday:active{
+    animation: 0.1s linear 0s 1 running clickAnimation;
 }
