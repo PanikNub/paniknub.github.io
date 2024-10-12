@@ -1,0 +1,12 @@
+body{
+    background: linear-gradient(rgb(174, 181, 183), rgb(151, 157, 158), rgb(134, 138, 139));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+#restaurantGame{
+    font-size: 25px;
+}
