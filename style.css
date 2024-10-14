@@ -12,9 +12,11 @@ body{
 
 #tableHead{
     font-size: 30px;
+    text-align: center;
 }
 #tableData{
     font-size: 25px;
+    text-align: center;
 }
 
 #birthday{
