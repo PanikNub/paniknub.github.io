@@ -9,13 +9,16 @@
     </head>
 
     <body>
-        <h1 id = "header">Happy Birthday Mom!</h1><hr><br>
+        <h1 id = "header">Birthday Control Panel</h1><hr><br>
 
         <button id = "confettiButton" class = "buttons" type = "button">Happy Birthday!</button>
         <button id = "songButton" class = "buttons" type = "button" onclick = "birthdaySong.play()">Birthday Song</button><br>
 
-        <audio id = "birthdaySong" src = "birthdaySong.mp3">
-        <audio id = "confettiAudio" src = "confetti.mp3">
+        <audio id = "birthdaySong"><source src = "birthdaySong.mp3"></audio>
+        <audio id = "confettiAudio"><source src = "confetti.mp3"></audio><br>
+        <audio id = "pikaSound"><source src = "pikaSound.mp3"></audio>
+        
+        <img id = "pikaImage" src = "pikachu.jpg">
 
         <script src = "script.js"></script>
     </body>
