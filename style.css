@@ -1,13 +1,31 @@
 body{
-    background: linear-gradient(rgb(233, 211, 138), rgb(158, 204, 211));
+    /*background: linear-gradient(rgb(233, 211, 138), rgb(158, 204, 211));
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: fixed; */
 
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: left;
 }
+.switchModes{
+    background-color: black;
+    color: white;
+}
+
 @keyframes clickAnimation{
     0%{transform:matrix(0.5, 0, 0, 0.5, 0, 0)};
+}
+
+#switchModes{
+    font-size: 25px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    position: relative;
+    left: 340px;
+    bottom: 55px;
+}
+#switchModes:active{
+    animation: 0.1s linear 0s 1 running clickAnimation;
 }
 
 #tableHead{

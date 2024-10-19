@@ -2,11 +2,10 @@ body{
     background: linear-gradient(pink, rgb(200, 175, 0), skyblue);
     background-repeat: no-repeat;
     background-attachment: fixed;
+
+    text-align: center;
 }
 
-@keyframes clickAnimation{
-    0%{transform:matrix(0.5, 0, 0, 0.5, 0, 0)}
-}
 @keyframes backgroundChange{
     0%{background: linear-gradient(yellow, red, blue)}
     25%{background: linear-gradient(orange, violet, green)}
@@ -16,14 +15,15 @@ body{
 }
 
 #header{
-    width: 340px;
-    border-radius: 8px;
+    font-size: 50px;
+    color: rgb(62, 99, 221);
 }
 #header:hover{
     animation: 1s linear 0s infinite running backgroundChange;
 }
 .buttons{
     font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 5px;
     border-radius: 8px;
     cursor: pointer;
@@ -35,8 +35,14 @@ body{
     animation: 1s linear 0s infinite running backgroundChange;
 }
 
-#pikaImage{
+.images{
     width: 250px;
     border-radius: 8px;
-    cursor: pointer;
+}
+#happyBirthday{
+    font-size: 100px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(62, 99, 221);
+
+    position: relative;
 }

@@ -6,6 +6,8 @@
 
         <meta charset = "UTF-8">
         <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <meta name = "author" content = "Alexander Nguyen">
+        <meta name = "description" content = "Birthday Control Panel">
     </head>
 
     <body>
@@ -14,11 +16,16 @@
         <button id = "confettiButton" class = "buttons" type = "button">Happy Birthday!</button>
         <button id = "songButton" class = "buttons" type = "button" onclick = "birthdaySong.play()">Birthday Song</button><br>
 
-        <audio id = "birthdaySong"><source src = "birthdaySong.mp3"></audio>
-        <audio id = "confettiAudio"><source src = "confetti.mp3"></audio><br>
-        <audio id = "pikaSound"><source src = "pikaSound.mp3"></audio>
+        <audio id = "birthdaySong"><source src = "audios/birthdaySong.mp3"></audio>
+        <audio id = "confettiAudio"><source src = "audios/confetti.mp3"></audio><br>
+        <audio id = "pikaSound"><source src = "audios/pikaSound.mp3"></audio>
         
-        <img id = "pikaImage" src = "pikachu.jpg">
+        <img class = "images" src = "images/pikachu.jpg" alt = "Pikachu!">
+        <img class = "images" src = "images/pikaGang.jpg" alt = "The Pikachu gang!">
+        <img class = "images" src = "images/squirtle.jpg" alt = "Huge Squirtle!">
+        <img class = "images" src = "images/rat.jpg" alt = "Rat!">
+
+        <h1 id = "happyBirthday"><i>Happy Birthday!!!</i></h1>
 
         <script src = "script.js"></script>
     </body>
