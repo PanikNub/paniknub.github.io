@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+	<head>
+		<title>PanikHub</title>
+
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width=device-width, inital-scale=1.0">
+		<meta name = "author" content = "Alexander Nguyen">
+		<meta name = "description" content = "An open-source, gaming hub for low-end device users.">
+		<meta name = "keywords" content = "Open-source, platform, low-end, devices, games">
+		
+		<!-- CSS -->
+		<style>
+			.modeSwitch{
+				background: black;
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>PanikHub</h1>
+		<p id = "mode" style = "cursor: pointer; color: blue;"><u>Light -> Dark</u></p>
+		<hr>
+
+		<p>PanikHub is an open-source, hub for users of low-end devices who want to play great games!</p>
+		
+		<h2>PanikHub</h2>
+		<ul>
+			<li><a href = "panikhub.zip">PanikHub</a></li>
+		</ul>
+		
+		<h2>How to run PanikHub</h2>
+		<ol>
+			<li>Well you see, PanikHub is written in C </li>
+		</ol>
+
+		<!-- Javascript -->
+		<script>
+			"use strict";
+			
+			// Mode switch //
+			let mode = document.getElementById("mode");
+			let light = true;
+
+			mode.onclick = function(){
+				if(light){
+					mode.innerHTML = "<u>Dark -> Light</u>";
+				}
+				else{
+					mode.innerHTML = "<u>Light -> Dark</u>";
+				}
+				
+				light = light ? false : true;
+				document.body.classList.toggle("modeSwitch");
+			}
+		</script>
+	</body>
+</html>
