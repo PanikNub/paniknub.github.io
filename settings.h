@@ -26,4 +26,15 @@ void G(char* c, unsigned short amount){ // Output graphics
 	}
 }
 
+struct Peza{
+	unsigned long long int money;
+	unsigned long long int earn;
+	unsigned long long int promotion;
+
+	unsigned long long int orders;
+	unsigned long long int pizzas;
+	unsigned long long int boxes;
+	unsigned long long int deliveries;
+};
+
 #endif
