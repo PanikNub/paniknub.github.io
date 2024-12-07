@@ -1,7 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "settings.h"
+#include <time.h>
 
+// Settings //
+#define true 1
+#define false 0
+typedef char bool;
+
+void wait(short seconds){ // Not exact sadly...
+	time_t start, end;
+	time(&start);
+
+	do(time(&end)); while(end - start <= seconds);
+}
+char charUpr(char c){
+	if(c != '\0' && c >= 'a' && c <= 'z'){
+		c -= 32;
+	}
+	return c;
+}
+void G(char* c, unsigned short amount){
+	for(int i = 0; i < amount; i++){
+		printf("%s", c);
+	}
+}
+
+// Peza struct //
+struct Peza{
+	unsigned long long int money;
+	unsigned long long int earn;
+	unsigned long long int promotion;
+
+	unsigned long long int orders;
+	unsigned long long int pizzas;
+	unsigned long long int boxes;
+	unsigned long long int deliveries;
+};
+
+
+// Main //
 int main(void){
 	srand((unsigned) time(NULL));
 
