@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 // Settings //
 #define true 1
@@ -73,9 +74,33 @@ int main(void){
 				printf("-- Peza! --\n");
 				G("-", 40);
 				G("\n", 1);
+
+				// Load data (I would like to know a way to make this shorter...)//
+				struct Peza peza;
+
+				FILE* moneyFile = fopen("pzM.txt", "r");
+				char data[1000];
+				fgets(data, 1000, moneyFile);
+				peza.money = atoi(data);
+
+				FILE* earnFile = fopen("pzE.txt", "r");
+				fgets(data, 1000, earnFile);
+				peza.earn = atoi(data);
+				
+				FILE* promFile = fopen("pzP.txt", "r");
+				fgets(data, 1000, promFile);
+				peza.promotion = atoi(data);
+
+				peza.orders = 0;
+				peza.pizzas = 0;
+				peza.boxes = 0;
+				peza.deliveries = 0;
+
+				fclose(moneyFile);
+				fclose(earnFile);
+				fclose(promFile);
 				
 				printf("Type in 'H' for help!\n\n");
-				struct Peza peza = {0, 10, 50, 0, 0, 0, 0};
 				
 				// Game loop //
 				while(appRunning){
@@ -97,35 +122,50 @@ int main(void){
 						case '1': // Order
 							printf("Getting customer order...\n");
 							peza.orders++;
-							wait(1);
+							 wait(1);
 
 							printf("Done!\n");
 							break;
 						case '2': // Cook //
-							printf("Cooking pizza...\n");
-							peza.pizzas++;
-							peza.orders--;
-							wait(1);
+							if(peza.orders > 0){
+								printf("Cooking pizza...\n");
+								peza.pizzas++;
+								peza.orders--;
+								wait(1);
 
-							printf("Done!\n");
+								printf("Done!\n");
+							}
+							else{
+								printf("You need a order first!\n");
+							}
 							break;
 						case '3': // Box and cut //
-							printf("Boxing and cutting pizza...\n");
-							peza.boxes++;
-							peza.pizzas--;
-							wait(1);
+							if(peza.pizzas > 0){
+								printf("Boxing and cutting pizza...\n");
+								peza.boxes++;
+								peza.pizzas--;
+								wait(1);
 
-							printf("Done!\n");
+								printf("Done!\n");
+							}
+							else{
+								printf("You need pizza first!\n");
+							}
 							break;
 						case '4': // Deliver //
-							printf("Delivering pizza...\n");
-							peza.deliveries++;
-							peza.boxes--;
-							peza.money += rand() % peza.earn + 1;
-							wait(1);
+							if(peza.boxes){
+								printf("Delivering pizza...\n");
+								peza.deliveries++;
+								peza.boxes--;
+								peza.money += rand() % peza.earn + 1;
+								wait(1);
 
-							printf("Done!\n");
-							printf("Type in '0' for stats!\n");
+								printf("Done!\n\n");
+								printf("Type in '0' for stats!\n");
+							}
+							else{
+								printf("You need a pizza box first!\n");
+							}
 							break;
 						case 'P': // Promotion
 							if(peza.money >= peza.promotion){
