@@ -195,8 +195,19 @@ int main(void){
 					G("\n", 1);
 				}
 				appRunning = true;
+				
+				moneyFile = fopen("pzM.txt", "w");
+				sprintf(data, "%d", peza.money);
+				fprintf(moneyFile, data);
+				fclose(moneyFile);
+
+				earnFile = fopen("pzE.txt", "w");
+
+
+				printf("Saving data...\n");
+				wait(0.5);
 				printf("Exitting Peza!...\n");
-				wait(1);
+				wait(0.5);
 				break;
 			case 'H': // Help
 				printf("Games:\n");
