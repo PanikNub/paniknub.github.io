@@ -5,54 +5,48 @@
 
 		<meta charset = "UTF-8">
 		<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-		<meta name = "author" content = "Alexander Nguyen">
-		<meta name = "description" content = "An open-source, gaming hub for low-end device users.">
-		<meta name = "keywords" content = "Open-source, platform, low-end, devices, games">
 		
 		<!-- CSS -->
 		<style>
-			.modeSwitch{
-				background: rgb(25, 25, 25);
-				color: white;
+			body{
+				font-family: Sans-serif;
 			}
 
-			body{
-				font-family: sans-serif, Verdana;
+			.modeChange{
+				background: black;
+				color: white;
 			}
 		</style>
 	</head>
-
+	
 	<body>
 		<h1>PanikHub</h1>
-		<p id = "mode" style = "cursor: pointer; color: blue;"><u>Light -> Dark</u></p>
+		<p id = "mode" style = "color: blue; cursor:pointer;"><u>Light -> Dark</u></p>
 		<hr>
 		
-		<p>PanikHub is an open-source, <i>terminal</i> program for users of low-end devices who want to play great games!</p>
-		<p><i><b>NOTE:</b> running PanikHub takes some programming experience, so I would recommend learning a bit of programming before trying PanikHub.</i></p>
-
+		<b>WARNING: </b>running PanikHub will require some knowledge in programming.
 		<ul>
-			<li>PanikHub: <a href = "main.lua" download="main.lua">PanikHub</a></li>
-			<li>Github repository: <a href = "https://github.com/PanikNub/paniknub.github.io" target = _blank>PanikHub</a></li>
+			<li><a href = "panikhub.zip" download>PanikHub</a></li>
+			<li><a href = "https://github.com/PanikNub/paniknub.github.io">Github Repository</a></li>
 		</ul>
 
 		<!-- Javascript -->
 		<script>
 			"use strict";
-			
-			// Mode switch //
+
 			let mode = document.getElementById("mode");
 			let light = true;
 
 			mode.onclick = function(){
 				if(light){
 					mode.innerHTML = "<u>Dark -> Light</u>";
+					light = false;
 				}
 				else{
 					mode.innerHTML = "<u>Light -> Dark</u>";
+					light = true;
 				}
-				
-				light = light ? false : true;
-				document.body.classList.toggle("modeSwitch");
+				document.body.classList.toggle("modeChange");
 			}
 		</script>
 	</body>
