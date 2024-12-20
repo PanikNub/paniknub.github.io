@@ -75,6 +75,7 @@ int main(void){
 
 	switch(peza.logins){
 	  case 1:
+	    peza.money = 0;
 	    peza.earn = 10;
 	    peza.promotion = 50;
             break;
