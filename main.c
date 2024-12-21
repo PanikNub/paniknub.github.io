@@ -16,6 +16,8 @@ struct Peza{
 	unsigned long long int earn;
 	unsigned long long int promotion;
 	unsigned short energy;
+	unsigned short rest;
+	unsigned short stop;
 
 	unsigned long long int orders;
 	unsigned long long int pizzas;
@@ -58,6 +60,11 @@ int main(void){
 	peza.money = atoi(data);
 	fclose(moneyFile);
 	
+	FILE* energyFile = fopen("data/pezaEnergy.txt", "a+");
+	fgets(data, 1000, energyFile);
+	peza.energy = atoi(data);
+	fclose(energyFile);
+
 	FILE* earnFile = fopen("data/pezaEarn.txt", "a+");
 	fgets(data, 1000, earnFile);
 	peza.earn = atoi(data);
@@ -76,8 +83,10 @@ int main(void){
 	switch(peza.logins){
 	  case 1:
 	    peza.money = 0;
+	    peza.energy = 100;
 	    peza.earn = 10;
 	    peza.promotion = 50;
+	    peza.deliveries = 0;
             break;
 	}
 	fclose(loginFile);
@@ -105,50 +114,89 @@ int main(void){
 		    printf("Deliveries: %lld\n", peza.deliveries);
 		    break;
 		  case '1': // Order
-		    printf("Getting customer order...\n");
-		    peza.orders++;
-		    sleep(1);
+		    if(peza.energy > 0){
+		      printf("Getting customer order...\n");
+		      peza.orders++;
+		      peza.energy--;
+		      sleep(1);
 		    
-		    printf("Done!\n");
+		      printf("Done!\n");
+		    }
+		    else{
+		      printf("You need more energy!\n");
+		    }
 		    break;
 		  case '2': // Cook
-		    if(peza.orders > 0){
+		    if(peza.orders > 0 && peza.energy > 0){
 		      printf("Cooking pizza...\n");
 		      peza.orders--;
+		      peza.energy--;
 		      peza.pizzas++;
 		      sleep(1);
 
 		      printf("Done!\n");
 		    }
-		    else{
+		    else if(peza.orders <= 0){
 		      printf("You need an order to fulfill!\n");
+		    }
+		    else{
+		      printf("You need more energy!\n");
 		    }
 		    break;
 		  case '3': // Cut and box
-		    if(peza.pizzas > 0){
+		    if(peza.pizzas > 0 && peza.energy > 0){
 	              printf("Cutting and boxing pizza...\n");
 		      peza.pizzas--;
+		      peza.energy--;
 		      peza.boxes++;
 		      sleep(1);
 
 		      printf("Done!\n");
 		    }
-		    else{
+		    else if(peza.pizzas <= 0){
 		      printf("You need a pizza to box!\n");
+		    }
+		    else{
+		      printf("You need more energy!\n");
 		    }
 		    break;
 		  case '4': // Delivery
-		    if(peza.boxes > 0){
+		    if(peza.boxes > 0 && peza.energy > 0){
                       printf("Deliverying pizza...\n");
 		      peza.boxes--;
+		      peza.energy--;
 		      peza.deliveries++;
 		      peza.money += rand() % peza.earn + 1;
 		      sleep(1);
 
 		      printf("Done! Type in 0 for stats.\n");
 		    }
-		    else{
+		    else if(peza.boxes <= 0){
 		      printf("You need a pizza box to deliver!\n");
+		    }
+		    else{
+		      printf("You need more energy!\n");
+		    }
+		    break;
+		  case '5': // Rest
+		    if(peza.energy < 100){
+		      printf("Resting time (0-100) > ");
+		      scanf(" %d", &peza.rest); G("\n", 1);
+		      peza.stop = peza.rest + peza.energy;
+		      
+		      if(peza.rest >= 0 && peza.rest <= 100 && peza.stop <= 100){
+		        for(int i = peza.energy; i != peza.stop; i++){
+		          printf("Energy: %d/100\n", i + 1);
+		          peza.energy++;
+			  sleep(0.5);
+		        }
+		      }
+		      else{
+		        printf("Invalid amount!\n");
+		      }
+		    }
+		    else{
+		      printf("You have enough energy!\n");
 		    }
 		    break;
 		  case 'P': // Promotion
@@ -168,7 +216,7 @@ int main(void){
 		    break;
 		  case 'H':
 		    printf("0: Stats\n1: Get customer order\n2: Cook pizza\n");
-		    printf("3: Cut and box pizza\n4: Deliver pizza\nP: Promotion\nL: Exit Peza\n");
+		    printf("3: Cut and box pizza\n4: Deliver pizza\n5: Rest\nP: Promotion\nL: Exit Peza (SAVES DATA)\n");
 		    break;
 		  case 'L':
 		    printf("Exitting Peza!\n");
@@ -184,13 +232,21 @@ int main(void){
 	            fprintf(moneyFile, "%lld", peza.money);
 	            fclose(moneyFile);
 
+		    energyFile = fopen("data/pezaEnergy.txt", "w");
+		    fprintf(energyFile, "%lld", peza.energy);
+		    fclose(energyFile);
+
 	            earnFile = fopen("data/pezaEarn.txt", "w");
 		    fprintf(earnFile, "%lld", peza.earn);
 		    fclose(earnFile);
 
 		    promFile = fopen("data/pezaProm.txt", "w");
 		    fprintf(promFile, "%lld", peza.promotion);
-	 	    fclose(promFile); 
+	 	    fclose(promFile);
+
+		    delFile = fopen("data/pezaDelivery.txt", "w");
+		    fprintf(delFile, "%lld", peza.deliveries);
+		    fclose(delFile);
 		    break;
 		}
 		line();
