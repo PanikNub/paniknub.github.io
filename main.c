@@ -254,7 +254,7 @@ int main(void){
 	gameRunning = true;
         break;
       case 'H': // Help //
-	printf("1. Peza!\n2. Coming soon...\n\nCommands:\nL: Exit\n");
+	printf("1: Peza!\n2: Coming soon...\n\nCommands:\nL: Exit\n");
 	break;
       case 'L': // Exit
         printf("Exitting PanikHub...\n");
