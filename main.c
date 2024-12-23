@@ -181,7 +181,7 @@ int main(void){
 		  case '5': // Rest
 		    if(peza.energy < 100){
 		      printf("Resting time (0-100) > ");
-		      scanf(" %d", &peza.rest); G("\n", 1);
+		      scanf(" %hd", &peza.rest); G("\n", 1);
 		      peza.stop = peza.rest + peza.energy;
 		      
 		      if(peza.rest >= 0 && peza.rest <= 100 && peza.stop <= 100){
@@ -211,7 +211,7 @@ int main(void){
 		      break;
 		    }
 		    else{
-		      printf("You need $%d more!\n", peza.promotion - peza.money);
+		      printf("You need $%lld more!\n", peza.promotion - peza.money);
 		    }
 		    break;
 		  case 'H':
@@ -233,7 +233,7 @@ int main(void){
 	            fclose(moneyFile);
 
 		    energyFile = fopen("data/pezaEnergy.txt", "w");
-		    fprintf(energyFile, "%lld", peza.energy);
+		    fprintf(energyFile, "%d", peza.energy);
 		    fclose(energyFile);
 
 	            earnFile = fopen("data/pezaEarn.txt", "w");
@@ -254,7 +254,7 @@ int main(void){
 	gameRunning = true;
         break;
       case 'H': // Help //
-	printf("1: Peza!\n2: Coming soon...\n\nCommands:\nL: Exit\n");
+	printf("1. Peza!\n2. Coming soon...\n\nCommands:\nL: Exit\n");
 	break;
       case 'L': // Exit
         printf("Exitting PanikHub...\n");
